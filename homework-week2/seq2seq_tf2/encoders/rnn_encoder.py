@@ -18,10 +18,9 @@ class Encoder(tf.keras.layers.Layer):
         定义单向的RNN、GRU、LSTM层
         your code
         """
-        self.gru = tf.keras.layers.GRU(self.enc_units, return_sequences=True, return_state=True,
+        self.gru = tf.keras.layers.GRU(units=self.enc_units, return_sequences=True, return_state=True,
                                        recurrent_initializer='glorot_uniform')
-        # self.lstm = tf.keras.layers.LSTM(self.enc_units, return_sequences=True, return_state=True,
-        #                                 recurrent_initializer='glorot_uniform')
+        # self.lstm = tf.keras.layers.LSTM(self.enc_units, return_sequences=True, return_state=True)
         # self.rnn = tf.keras.layers.RNN(self.enc_units, return_sequences=True, return_state=True,
         #                                go_backwards=True)
         self.bigru = tf.keras.layers.Bidirectional(self.gru, merge_mode='concat')

@@ -58,8 +58,7 @@ class Decoder(tf.keras.layers.Layer):
         定义单向的RNN、GRU、LSTM层
         your code
         """
-        self.gru = tf.keras.layers.GRU(self.dec_units, return_state=True, return_sequences=True,
-                                       recurrent_initializer='glorot_uniform')
+        self.gru = tf.keras.layers.GRU(units=self.dec_units, return_state=True, return_sequences=True)
 
         # self.dropout = tf.keras.layers.Dropout(0.5)
         """

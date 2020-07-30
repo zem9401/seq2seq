@@ -53,7 +53,7 @@ def build_vocab(items, sort=True, min_count=0, lower=False):
         按照字典里的词频进行排序，出现次数多的排在前面
         your code(one line)
         """
-        dic_sorted = sorted(dic.items(), key=lambda x: x[-1], reverse=True)
+        dic_sorted = dict(sorted(dic.items(), key=lambda x: x[-1], reverse=True))
         # print("我输出的是字典里词频排序：", dic_sorted)
 
         # 根据提供的min_count对最小频次筛选，小于以及等于最小频次的予以清除，将清除后的内容存在result里
@@ -79,10 +79,12 @@ def build_vocab(items, sort=True, min_count=0, lower=False):
     # 通过字典进行键值对互换后，将字典内的键值对输出成list形式
     # vocab = list(({v: i for i, v in enumerate(result)}).items())
     vocab = [(word, i) for i, word in enumerate(result)]
+
     # vocab = list((enumerate(result)))
     # reverse_vocab = sorted(vocab.items(), key=lambda x: x[-1], reverse=True)
 
-    reverse_vocab = [(word, i) for i, word in sorted(enumerate(result), reverse=True)]
+    reverse_vocab = [(i, word) for i, word in sorted(enumerate(result), reverse=True)]
+
     # reverse_vocab = [(i, word) for i, word in enumerate(result)]
     # print("我输出的是vocab:", vocab)
     # print("我输出的是reverse_vocab:", reverse_vocab)
